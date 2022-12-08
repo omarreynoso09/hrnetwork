@@ -8,6 +8,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
+
 app.use(cors());
 app.use(
   fileUpload({
@@ -15,7 +16,7 @@ app.use(
   })
 );
 //routes
-readdirSync("./routes").map((r) => app.use("/", require("./routes/" + r)));
+readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
 
 //database
 mongoose
